@@ -1,15 +1,689 @@
-/* Глобальные стили.
-   Минимум: сброс отступов и шрифт по умолчанию.
-   Остальное — стили своей страницы — добавляем сами
-   (в этом файле или в отдельных .css для компонентов). */
+
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Alata&display=swap");
 
 * {
+  box-sizing: border-box;
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
 }
 
 body {
-  min-height: 100vh;
-  font-family: sans-serif;
+  font-family: "DM Sans", sans-serif;
+  background: #f9f9f9;
+  color: #1f2a2e;
+  line-height: 1.4;
+  -webkit-font-smoothing: antialiased;
+}
+
+button,
+input {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  background: none;
+}
+
+button:disabled {
+  cursor: not-allowed;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* HEADER */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 48px;
+  background: #fff;
+  border-bottom: 1px solid #e8e2d9;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.logo-mark {
+  width: 40px;
+  height: 40px;
+  background: #1f2a2e;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-weight: 700;
+  font-size: 18px;
+  flex-shrink: 0;
+}
+
+.brand-text h1 {
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 26px;
+}
+
+.brand-text p {
+  font-size: 12px;
+  font-weight: 500;
+  color: #7a7a7a;
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.nav a {
+  font-size: 14px;
+  font-weight: 500;
+  color: #7a7a7a;
+}
+
+.nav a.active,
+.nav a:hover {
+  color: #1f2a2e;
+}
+
+.btn-book {
+  padding: 12px 20px;
+  background: #1f2a2e;
+  color: #fff;
+  font-weight: 700;
+  font-size: 14px;
+  border-radius: 8px;
+}
+
+.btn-book:hover,
+.btn-continue:hover {
+  background: #2a3136;
+}
+
+/* STEPPER */
+.stepper {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 24px 48px;
+  background: #fff;
+  border-bottom: 1px solid #d5d5d5;
+}
+
+.step {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex: 1;
+  min-width: 0;
+}
+
+.step-num {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: #ebebeb;
+  color: #626a6d;
+  font-weight: 700;
+  font-size: 11px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.step-num.done {
+  background: #687478;
+  color: #fff;
+}
+
+.step-num.active {
+  background: #1f2a2e;
+  color: #fff;
+}
+
+.step-label {
+  font-size: 12px;
+  color: #626a6d;
+  flex: 1;
+}
+
+.step-label.active {
+  color: #1f2a2e;
+  font-weight: 700;
+}
+
+.step-label.muted {
+  color: #999;
+}
+
+.step-line {
+  width: 16px;
+  height: 1px;
+  background: #d5d5d5;
+  flex-shrink: 0;
+}
+
+/* MAIN */
+.main {
+  padding: 40px 48px 64px;
+  max-width: 1120px;
+  margin: 0 auto;
+}
+
+.page-head {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  margin-bottom: 32px;
+  flex-wrap: wrap;
+}
+
+.btn-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  border: 1px solid #e8e2d9;
+  border-radius: 10px;
+  background: #fff;
+  font-weight: 700;
+  font-size: 14px;
+  color: #1f2a2e;
+}
+
+.btn-back:hover {
+  background: #fafafa;
+}
+
+.step-indicator {
+  font-size: 13px;
+  font-weight: 700;
+  color: #7a7a7a;
+  text-transform: uppercase;
+}
+
+.page-head h2 {
+  font-size: 28px;
+  font-weight: 700;
+  line-height: 36px;
+  letter-spacing: -0.3px;
+}
+
+/* LAYOUT */
+.layout {
+  display: flex;
+  gap: 32px;
+  align-items: flex-start;
+}
+
+/* CALENDAR */
+.cal-card {
+  width: 516px;
+  max-width: 100%;
+  background: #fff;
+  border-radius: 12px;
+  padding: 24px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.cal-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  min-height: 26px;
+  gap: 12px;
+}
+
+.cal-head h3 {
+  font-family: Arial, sans-serif;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 23px;
+  color: #333;
+}
+
+.cal-nav {
+  display: flex;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.cal-nav button {
+  width: 26px;
+  height: 26px;
+  background: #f0f0f0;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cal-nav button:hover:not(:disabled) {
+  background: #e4e4e4;
+}
+
+.cal-nav button:disabled {
+  opacity: 0.35;
+}
+
+.cal-dow-row {
+  display: grid;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+  gap: 8px;
+  width: 100%;
+}
+
+.cal-dow {
+  text-align: center;
+  font: 700 12px/14px Arial, sans-serif;
+  color: #333;
+}
+
+.cal-grid {
+  display: grid;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+  grid-auto-rows: 36px;
+  column-gap: 8px;
+  row-gap: 6px;
+  width: 100%;
+}
+
+.cal-day {
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 18px;
+  border: 1px solid #fff;
+  background: #ededed;
+  font: 700 13px/15px Arial, sans-serif;
+  color: #333;
+  cursor: pointer;
+}
+
+.cal-day:hover:not(:disabled) {
+  background: #e2e2e2;
+}
+
+.cal-day.muted {
+  background: #fff;
+  border-color: #fff;
+  font: 400 13px/15px Alata, Arial, sans-serif;
+  color: #999;
+  cursor: default;
+}
+
+.cal-day.muted:hover {
+  background: #fff;
+}
+
+.cal-day.selected,
+.cal-day.selected:hover {
+  background: #1f2a2e;
+  border-color: #1f2a2e;
+  color: #fff;
+}
+
+.cal-day:disabled {
+  opacity: 1;
+}
+
+/* TIME */
+.time-card {
+  width: 380px;
+  max-width: 100%;
+  background: #fff;
+  border-radius: 12px;
+  padding: 24px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.time-card h3 {
+  font-family: Arial, sans-serif;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 23px;
+  color: #333;
+}
+
+.time-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 24px;
+  width: 100%;
+}
+
+.time-slot {
+  min-width: 0;
+  min-height: 48px;
+  border-radius: 8px;
+  border: 1px solid #f0f1f0;
+  background: #fff;
+  font: 700 14px/16px Arial, sans-serif;
+  color: #333;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+}
+
+.time-slot:hover:not(:disabled) {
+  border-color: #1f2a2e;
+}
+
+.time-slot.selected {
+  background: #1f2a2e;
+  border-color: #1f2a2e;
+  color: #fff;
+}
+
+.time-slot.busy {
+  background: #f5f5f3;
+  border-color: #f5f5f3;
+  color: #999;
+  cursor: not-allowed;
+}
+
+.time-slot span {
+  font: 400 10px/14px Alata, Arial, sans-serif;
+  color: #999;
+}
+
+/* BOTTOM BAR */
+.bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 24px;
+  margin-top: 32px;
+  flex-wrap: wrap;
+}
+
+.summary {
+  max-width: 420px;
+}
+
+.summary-label {
+  font-size: 13px;
+  font-weight: 700;
+  color: #7a7a7a;
+  text-transform: uppercase;
+  margin-bottom: 4px;
+}
+
+.summary-text {
+  font-size: 14px;
+  line-height: 140%;
+  color: #5f6b6e;
+}
+
+.btn-continue {
+  padding: 14px 36px;
+  background: #1f2a2e;
+  color: #fff;
+  border-radius: 8px;
+  font-weight: 700;
+  font-size: 14px;
+  flex-shrink: 0;
+}
+
+.btn-continue:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+/* FOOTER */
+.footer {
+  background: #242424;
+  padding: 64px 48px;
+  color: #fff;
+  margin-top: 64px;
+}
+
+.footer-grid {
+  display: flex;
+  gap: 40px;
+  align-items: flex-start;
+  max-width: 928px;
+  margin: 0 auto;
+  padding-bottom: 48px;
+}
+
+.footer-col {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  min-width: 0;
+}
+
+.footer-col.brand-col .brand-text h1 {
+  color: #fff;
+}
+
+.footer-col.brand-col .brand-text p {
+  color: #a0a5a5;
+}
+
+.footer-tag {
+  font-size: 14px;
+  line-height: 150%;
+  color: #a0a5a5;
+}
+
+.footer-col h4 {
+  font-size: 13px;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: #fff;
+  line-height: 17px;
+}
+
+.footer-link {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  line-height: 18px;
+  color: #d0d5d5;
+}
+
+.footer-link svg {
+  flex-shrink: 0;
+}
+
+.footer-link.phone {
+  color: #fff;
+  font-weight: 700;
+}
+
+.footer-col p {
+  font-size: 14px;
+  color: #d0d5d5;
+  line-height: 18px;
+}
+
+.footer-bottom {
+  max-width: 928px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  padding-top: 24px;
+  border-top: 1px solid #3d4243;
+}
+
+.footer-bottom p,
+.footer-bottom a {
+  font-size: 13px;
+  color: #808585;
+}
+
+.footer-bottom a {
+  text-decoration: underline;
+}
+
+.footer-bottom a:hover {
+  color: #fff;
+}
+
+/* LOADING AND ERRORS */
+.loading-state,
+.error-state,
+.empty-state {
+  padding: 20px 0;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.error-state {
+  color: #b42318;
+}
+
+.retry-button {
+  margin-top: 12px;
+  padding: 10px 14px;
+  border: 1px solid #e8e2d9;
+  border-radius: 8px;
+  background: #fff;
+  color: #1f2a2e;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.retry-button:hover {
+  background: #f5f5f3;
+}
+
+.empty-state {
+  color: #7a7a7a;
+}
+
+/* RESPONSIVE */
+@media (max-width: 1100px) {
+  .header,
+  .stepper,
+  .main {
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+
+  .nav a {
+    display: none;
+  }
+
+  .stepper {
+    overflow-x: auto;
+  }
+
+  .step-label {
+    white-space: nowrap;
+  }
+
+  .layout {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .cal-card,
+  .time-card {
+    width: 100%;
+    max-width: 516px;
+  }
+
+  .footer {
+    padding: 48px 24px;
+  }
+
+  .footer-grid {
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 640px) {
+  .page-head {
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .page-head h2 {
+    font-size: 22px;
+    line-height: 28px;
+    width: 100%;
+  }
+
+  .main {
+    padding: 24px 16px 40px;
+  }
+
+  .header {
+    padding: 16px;
+  }
+
+  .stepper {
+    padding: 18px 16px;
+  }
+
+  .cal-card,
+  .time-card {
+    padding: 16px;
+    overflow-x: auto;
+  }
+
+  .cal-dow-row,
+  .cal-grid {
+    width: 100%;
+  }
+
+  .cal-grid {
+    column-gap: 4px;
+  }
+
+  .time-grid {
+    width: 100%;
+    gap: 12px;
+  }
+
+  .bottom {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .summary {
+    max-width: none;
+  }
+
+  .btn-continue {
+    width: 100%;
+  }
+
+  .brand-text p {
+    display: none;
+  }
+
+  .footer {
+    padding: 40px 16px;
+  }
+
+  .footer-bottom {
+    flex-direction: column;
+    align-items: flex-start;
+  }
 }
